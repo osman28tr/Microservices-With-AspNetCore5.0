@@ -7,12 +7,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{91
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{16E64DA9-E295-4C1D-9236-E73539A464C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeCourse.Services.Catalog", "Services\Catalog\FreeCourse.Services.Catalog\FreeCourse.Services.Catalog.csproj", "{B75A748B-F4E0-4DF6-8658-0CABFA71CC0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreeCourse.Services.Catalog", "Services\Catalog\FreeCourse.Services.Catalog\FreeCourse.Services.Catalog.csproj", "{B75A748B-F4E0-4DF6-8658-0CABFA71CC0A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B571C5BD-BE1F-4186-8162-0D07AB83A6A8}"
 	ProjectSection(SolutionItems) = preProject
 		Ports.txt = Ports.txt
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{5DEE3A13-FA1F-4844-85F2-27CA4C881859}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeCourse.Shared", "Shared\FreeCourse.Shared\FreeCourse.Shared.csproj", "{A114BBE4-76FA-453B-845D-2EED6D0744E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +28,10 @@ Global
 		{B75A748B-F4E0-4DF6-8658-0CABFA71CC0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B75A748B-F4E0-4DF6-8658-0CABFA71CC0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B75A748B-F4E0-4DF6-8658-0CABFA71CC0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A114BBE4-76FA-453B-845D-2EED6D0744E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A114BBE4-76FA-453B-845D-2EED6D0744E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A114BBE4-76FA-453B-845D-2EED6D0744E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A114BBE4-76FA-453B-845D-2EED6D0744E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -31,6 +39,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{16E64DA9-E295-4C1D-9236-E73539A464C5} = {9142A13F-047D-499C-848E-6105E0D1E293}
 		{B75A748B-F4E0-4DF6-8658-0CABFA71CC0A} = {16E64DA9-E295-4C1D-9236-E73539A464C5}
+		{A114BBE4-76FA-453B-845D-2EED6D0744E1} = {5DEE3A13-FA1F-4844-85F2-27CA4C881859}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {97AF508E-58E0-418B-A54C-0044B79B84D2}
