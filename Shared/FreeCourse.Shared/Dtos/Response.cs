@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace FreeCourse.Shared.Dtos
 {
-    public class ResponseDto<T>
+    public class Response<T>
     {
         public T Data { get; private set; }
         [JsonIgnore]
@@ -13,33 +13,33 @@ namespace FreeCourse.Shared.Dtos
         [JsonIgnore]
         public bool IsSuccessful { get; private set; }
         public List<string> Errors { get; set; }
-        public static ResponseDto<T> Success(T data, int statusCode) {
-            return new ResponseDto<T>
+        public static Response<T> Success(T data, int statusCode) {
+            return new Response<T>
             {
                 Data = data,
                 StatusCode = statusCode,
                 IsSuccessful = true
             };
         }
-        public static ResponseDto<T> Success(int statusCode) {
-            return new ResponseDto<T>
+        public static Response<T> Success(int statusCode) {
+            return new Response<T>
             {
                 Data=default(T),
                 StatusCode = statusCode,
                 IsSuccessful = true
             };
         }
-        public static ResponseDto<T> Fail(List<string> errors,int statusCode)
+        public static Response<T> Fail(List<string> errors,int statusCode)
         {
-            return new ResponseDto<T> {
+            return new Response<T> {
                 Errors = errors,
                 StatusCode = statusCode,
                 IsSuccessful = false
             };
         }
-        public static ResponseDto<T> Fail(string error,int statusCode)
+        public static Response<T> Fail(string error,int statusCode)
         {
-            return new ResponseDto<T> { Errors = new List<string>() { error }, StatusCode = statusCode, IsSuccessful = false };
+            return new Response<T> { Errors = new List<string>() { error }, StatusCode = statusCode, IsSuccessful = false };
         }
     }
 }
