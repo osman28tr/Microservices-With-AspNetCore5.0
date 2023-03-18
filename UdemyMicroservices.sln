@@ -16,7 +16,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{5DEE3A13-FA1F-4844-85F2-27CA4C881859}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeCourse.Shared", "Shared\FreeCourse.Shared\FreeCourse.Shared.csproj", "{A114BBE4-76FA-453B-845D-2EED6D0744E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreeCourse.Shared", "Shared\FreeCourse.Shared\FreeCourse.Shared.csproj", "{A114BBE4-76FA-453B-845D-2EED6D0744E1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityServer", "IdentityServer", "{29EBF7CB-B3BA-43C3-A33B-AC8437A59560}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreeCourse.IdentityServer", "C:\Users\RamazanOsman\source\repos\UdemyMicroservices\IdentityServer\FreeCourse.IdentityServer\FreeCourse.IdentityServer.csproj", "{968A2F21-F765-45BC-9741-1278A6C26683}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +36,10 @@ Global
 		{A114BBE4-76FA-453B-845D-2EED6D0744E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A114BBE4-76FA-453B-845D-2EED6D0744E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A114BBE4-76FA-453B-845D-2EED6D0744E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{968A2F21-F765-45BC-9741-1278A6C26683}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{968A2F21-F765-45BC-9741-1278A6C26683}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{968A2F21-F765-45BC-9741-1278A6C26683}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{968A2F21-F765-45BC-9741-1278A6C26683}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -40,6 +48,7 @@ Global
 		{16E64DA9-E295-4C1D-9236-E73539A464C5} = {9142A13F-047D-499C-848E-6105E0D1E293}
 		{B75A748B-F4E0-4DF6-8658-0CABFA71CC0A} = {16E64DA9-E295-4C1D-9236-E73539A464C5}
 		{A114BBE4-76FA-453B-845D-2EED6D0744E1} = {5DEE3A13-FA1F-4844-85F2-27CA4C881859}
+		{968A2F21-F765-45BC-9741-1278A6C26683} = {29EBF7CB-B3BA-43C3-A33B-AC8437A59560}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {97AF508E-58E0-418B-A54C-0044B79B84D2}
