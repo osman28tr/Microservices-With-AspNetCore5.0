@@ -29,7 +29,9 @@ namespace FreeCourse.Services.Basket
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddHttpContextAccessor(); services.AddScoped<ISharedIdentityService, SharedIdentityService>();
+            services.AddHttpContextAccessor(); 
+            services.AddScoped<ISharedIdentityService, SharedIdentityService>();
+            services.AddScoped<IBasketService, BasketService>();
             services.Configure<RedisSettings>(Configuration.GetSection("RedisSettings"));
             //redis servis ayaða kalktýðýnda otomatik olarak baðlantý kurmasý için gerekli yapýlandýrma eklendi.
             services.AddSingleton<RedisService>(sp =>
