@@ -1,3 +1,5 @@
+using FreeCourse.Services.Discount.Services;
+using FreeCourse.Shared.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -29,6 +31,10 @@ namespace FreeCourse.Services.Discount
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpContextAccessor();
+            services.AddScoped<ISharedIdentityService, SharedIdentityService>();
+            services.AddScoped<IDiscountService, DiscountService>();
+
             var requireAuthorizePolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("sub");
             //discount'a ait jwt de birden fazla scope olmasýný istiyorsak(fullpermission,read,write gibi) yine authorizefilter oluþturup bunu aþaðýdaki addcontrollers'a vercektik.read ekleseydik mesela scopelar'ýn(basket_fullpermission,discount_fullpermission,discount_read gibi) içinde read olan eriþebilsin.örn: new AuthorizationPolicyBuilder().RequireClaim("scope", "discount_read");
