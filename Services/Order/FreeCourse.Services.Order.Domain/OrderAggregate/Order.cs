@@ -27,7 +27,7 @@ namespace FreeCourse.Services.Order.Domain.OrderAggregate
             _orderItems = new List<OrderItem>();
             CreatedDate = DateTime.Now;
             Address = address;
-            buyerId = BuyerId;
+            BuyerId = buyerId;
         }
         public void AddOrderItem(string productId,string productName,decimal price,string pictureUrl)
         {
