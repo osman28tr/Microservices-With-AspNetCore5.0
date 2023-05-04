@@ -11,7 +11,11 @@
       ],
       "UpstreamPathTemplate": "/services/catalog/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "UpstreamSchema": "http"
+      "UpstreamSchema": "http",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "GatewayAuthenticationSchema", //gateway koruma
+        "AllowedScopes": [ "catalog_fullpermission" ] //ilgili mikroservisi koruma, ilgili mikroservise girmeden authenticate ve authorize işlemleri gerçekleştirildi.
+      }
     },
     {
       "DownstreamPathTemplate": "/api/{everything}",
@@ -24,7 +28,11 @@
       ],
       "UpstreamPathTemplate": "/services/photostock/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "UpstreamSchema": "http"
+      "UpstreamSchema": "http",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "GatewayAuthenticationSchema", //gateway koruma
+        "AllowedScopes": [ "photo_stock_fullpermission" ] //ilgili mikroservisi koruma, ilgili mikroservise girmeden authenticate ve authorize işlemleri gerçekleştirildi.
+      }
     },
     {
       "DownstreamPathTemplate": "/api/{everything}",
@@ -37,7 +45,11 @@
       ],
       "UpstreamPathTemplate": "/services/basket/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "UpstreamSchema": "http"
+      "UpstreamSchema": "http",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "GatewayAuthenticationSchema", //gateway koruma
+        "AllowedScopes": [ "basket_fullpermission" ] //ilgili mikroservisi koruma, ilgili mikroservise girmeden authenticate ve authorize işlemleri gerçekleştirildi.
+      }
     },
     {
       "DownstreamPathTemplate": "/api/{everything}",
@@ -50,7 +62,11 @@
       ],
       "UpstreamPathTemplate": "/services/discount/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "UpstreamSchema": "http"
+      "UpstreamSchema": "http",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "GatewayAuthenticationSchema", //gateway koruma
+        "AllowedScopes": [ "discount_fullpermission" ] //ilgili mikroservisi koruma, ilgili mikroservise girmeden authenticate ve authorize işlemleri gerçekleştirildi.
+      }
     },
     {
       "DownstreamPathTemplate": "/api/{everything}",
@@ -63,7 +79,11 @@
       ],
       "UpstreamPathTemplate": "/services/order/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "UpstreamSchema": "http"
+      "UpstreamSchema": "http",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "GatewayAuthenticationSchema", //gateway koruma
+        "AllowedScopes": [ "order_fullpermission" ] //ilgili mikroservisi koruma, ilgili mikroservise girmeden authenticate ve authorize işlemleri gerçekleştirildi.
+      }
     },
     {
       "DownstreamPathTemplate": "/api/{everything}",
@@ -76,7 +96,11 @@
       ],
       "UpstreamPathTemplate": "/services/fakepayment/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "UpstreamSchema": "http"
+      "UpstreamSchema": "http",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "GatewayAuthenticationSchema", //gateway koruma
+        "AllowedScopes": [ "payment_fullpermission" ] //ilgili mikroservisi koruma, ilgili mikroservise girmeden authenticate ve authorize işlemleri gerçekleştirildi.
+      }
     }
   ],
   "GlobalConfiguration": {
