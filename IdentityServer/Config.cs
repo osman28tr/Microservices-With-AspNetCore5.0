@@ -52,9 +52,9 @@ namespace FreeCourse.IdentityServer
                 new Client
                 {
                    ClientName="Asp.Net Core MVC",
-                    ClientId="WebMvcClient",
+                    ClientId="WebMvcClient", 
                     ClientSecrets= {new Secret("secret".Sha256())},
-                    AllowedGrantTypes= GrantTypes.ClientCredentials,
+                    AllowedGrantTypes= GrantTypes.ClientCredentials, //refresh token yok.
                     AllowedScopes={ "catalog_fullpermission","photo_stock_fullpermission", "gateway_fullpermission", IdentityServerConstants.LocalApi.ScopeName }
                 },
                    new Client
@@ -63,12 +63,12 @@ namespace FreeCourse.IdentityServer
                     ClientId="WebMvcClientForUser",
                     AllowOfflineAccess=true,
                     ClientSecrets= {new Secret("secret".Sha256())},
-                    AllowedGrantTypes= GrantTypes.ResourceOwnerPassword,
-                    AllowedScopes={ "basket_fullpermission", "discount_fullpermission", "order_fullpermission", "payment_fullpermission", "gateway_fullpermission", IdentityServerConstants.StandardScopes.Email, IdentityServerConstants.StandardScopes.OpenId,IdentityServerConstants.StandardScopes.Profile, IdentityServerConstants.StandardScopes.OfflineAccess, IdentityServerConstants.LocalApi.ScopeName,"roles" },
-                    AccessTokenLifetime=1*60*60,
+                    AllowedGrantTypes= GrantTypes.ResourceOwnerPassword, //refresh token var.
+                    AllowedScopes={ "basket_fullpermission", "discount_fullpermission", "order_fullpermission", "payment_fullpermission", "gateway_fullpermission", IdentityServerConstants.StandardScopes.Email, IdentityServerConstants.StandardScopes.OpenId,IdentityServerConstants.StandardScopes.Profile, IdentityServerConstants.StandardScopes.OfflineAccess/*kullanıcı login olmadığı zaman refresh token ile yeni bir access token al.*/, IdentityServerConstants.LocalApi.ScopeName,"roles" }, //client'ın erişebileceği claimler
+                    AccessTokenLifetime=1*60*60, //access token ömrü
                     RefreshTokenExpiration=TokenExpiration.Absolute,
-                    AbsoluteRefreshTokenLifetime= (int) (DateTime.Now.AddDays(60)- DateTime.Now).TotalSeconds,
-                    RefreshTokenUsage= TokenUsage.ReUse
+                    AbsoluteRefreshTokenLifetime= (int) (DateTime.Now.AddDays(60)- DateTime.Now).TotalSeconds, //refresh 
+                    RefreshTokenUsage= TokenUsage.ReUse //refresh token tekrar kullanılabilir.
                 },
                    new Client
                 {
