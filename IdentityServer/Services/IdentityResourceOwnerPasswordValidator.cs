@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FreeCourse.IdentityServer.Services
 {
-    public class IdentityResourceOwnerPasswordValidator
+    public class IdentityResourceOwnerPasswordValidator:IResourceOwnerPasswordValidator
     {
         private readonly UserManager<ApplicationUser> _userManager;
 

@@ -34,6 +34,7 @@ namespace FreeCourse.Web.Controllers
                 {
                     ModelState.AddModelError(String.Empty, error);
                 });
+                return View();
             }
             return RedirectToAction(nameof(Index), "Home");
         }
