@@ -101,7 +101,7 @@ namespace FreeCourse.Web.Services
                  new AuthenticationToken{Name=OpenIdConnectParameterNames.ExpiresIn,Value = DateTime.Now.AddSeconds(token.ExpiresIn).ToString("o",CultureInfo.InvariantCulture)}
             });
 
-            authenticationProperties.IsPersistent = signInInput.IsRemember; //oluşacak cookie'nin kalıcı olup olmadığı
+            authenticationProperties.IsPersistent = signInInput.IsRemember; //oluşacak cookie'nin kalıcı olup olmadığı belirlendi.
 
             await _httpContextAccessor.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal, authenticationProperties); //artık cookie oluşturuldu.
 
