@@ -1,3 +1,4 @@
+using FreeCourse.Web.Handler;
 using FreeCourse.Web.Models;
 using FreeCourse.Web.Services;
 using FreeCourse.Web.Services.Interfaces;
@@ -36,7 +37,8 @@ namespace FreeCourse.Web
             services.AddHttpClient<IUserService, UserService>(opt =>
             {
                 opt.BaseAddress = new Uri(serviceApiSettings.IdentityBaseUri);
-            });
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>(); //userservice'in içerisinde bir istek baþlatýldýðýnda tokenhandler sýnýfýný kullancak.
+
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
             {
                 options.LoginPath = "/Auth/SignIn";
