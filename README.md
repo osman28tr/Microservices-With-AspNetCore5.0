@@ -7,4 +7,5 @@ Source: https://github.com/Fcakiroglu16/UdemyMicroservices
 
 Kullanılan Teknolojiler: Asp.Net Core Mvc & Api,Docker,IdentityServer,Jwt,CQRS,Domain Driver Design, Onion Architecture,
 MongoDb,Redis,MSSQL,PostgreSQL
+
 Kullanılan Dil: C#
