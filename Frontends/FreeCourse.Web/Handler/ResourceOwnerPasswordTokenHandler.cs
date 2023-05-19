@@ -48,6 +48,5 @@ namespace FreeCourse.Web.Handler
 
             return response;
         }
-
     }
 }
