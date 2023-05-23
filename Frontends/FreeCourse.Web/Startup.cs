@@ -6,6 +6,7 @@ using FreeCourse.Web.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.CodeAnalysis;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -34,6 +35,7 @@ namespace FreeCourse.Web
 
             services.AddScoped<ResourceOwnerPasswordTokenHandler>();
             services.AddHttpClient<IIdentityService, IdentityService>();
+            services.AddHttpClient<IClientCredentialsTokenService,ClientCredentialTokenService>(); //disco içerisinde adres belirtildiði için belirtmedik.
             services.AddHttpClient<ICatalogService, CatalogService>(opt =>
             {
                 opt.BaseAddress = new Uri($"{serviceApiSettings.GatewayBaseUri}/{serviceApiSettings.Catalog.Path}");
