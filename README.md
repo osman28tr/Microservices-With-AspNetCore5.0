@@ -5,7 +5,6 @@ Token Communication
 
 Source: https://github.com/Fcakiroglu16/UdemyMicroservices
 
-Kullanılan Teknolojiler: Asp.Net Core Mvc & Api,EntityFramework,Dapper,Docker,IdentityServer,Jwt,CQRS,Domain Driver Design, Onion Architecture,
-MongoDb,Redis,MSSQL,PostgreSQL
+Kullanılan Teknolojiler: Asp.Net Core Mvc & Api,EntityFramework,Automapper,IdentityModel,Dapper,Docker,IdentityServer,Jwt,CQRS,Domain Driver Design, Onion Architecture,MongoDb,Redis,MSSQL,PostgreSQL
 
 Kullanılan Dil: C#
