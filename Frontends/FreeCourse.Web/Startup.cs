@@ -35,15 +35,17 @@ namespace FreeCourse.Web
 
             services.AddScoped<ResourceOwnerPasswordTokenHandler>();
             services.AddScoped<ClientCredentialTokenHandler>();
+            
+            services.Configure<ServiceApiSettings>(Configuration.GetSection("ServiceApiSettings"));
+            services.Configure<ClientSettings>(Configuration.GetSection("ClientSettings"));
+            services.AddAccessTokenManagement();
             services.AddHttpClient<IIdentityService, IdentityService>();
-            services.AddHttpClient<IClientCredentialsTokenService,ClientCredentialTokenService>(); //disco içerisinde adres belirtildiði için belirtmedik.
+            services.AddHttpClient<IClientCredentialsTokenService, ClientCredentialTokenService>(); //disco içerisinde adres belirtildiði için belirtmedik.
             services.AddHttpClient<ICatalogService, CatalogService>(opt =>
             {
                 opt.BaseAddress = new Uri($"{serviceApiSettings.GatewayBaseUri}/{serviceApiSettings.Catalog.Path}");
             }).AddHttpMessageHandler<ClientCredentialTokenHandler>(); //catalog mikroservis'i ile iletiþime geçme iþlemi.
 
-            services.Configure<ServiceApiSettings>(Configuration.GetSection("ServiceApiSettings"));
-            services.Configure<ClientSettings>(Configuration.GetSection("ClientSettings"));
             services.AddHttpClient<IUserService, UserService>(opt =>
             {
                 opt.BaseAddress = new Uri(serviceApiSettings.IdentityBaseUri);
