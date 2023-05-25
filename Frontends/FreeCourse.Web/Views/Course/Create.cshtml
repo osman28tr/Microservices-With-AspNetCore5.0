@@ -13,7 +13,7 @@
 
 					<div class="mb-3">
 						<label class="form-label" asp-for="CategoryId"></label>
-						<select class="form-control" asp-items="@ViewBag.categoryList">
+						<select asp-for="CategoryId" class="form-control" asp-items="@ViewBag.categoryList">
 							<option value="">kategori seçiniz</option>
 						</select>
 

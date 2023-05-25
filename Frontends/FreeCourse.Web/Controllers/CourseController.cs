@@ -1,4 +1,5 @@
 ﻿using FreeCourse.Shared.Services;
+using FreeCourse.Web.Models.Catalog;
 using FreeCourse.Web.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -27,5 +28,18 @@ namespace FreeCourse.Web.Controllers
             ViewBag.categoryList = new SelectList(categories, "Id", "Name");
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateCourseInput createCourseInput)
+        {
+			var categories = await _catalogService.GetAllCategoryAsync();
+			ViewBag.categoryList = new SelectList(categories, "Id", "Name");
+			if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            createCourseInput.UserId = _sharedIdentityService.GetUserId;
+            await _catalogService.CreateCourseAsync(createCourseInput);
+            return RedirectToAction(nameof(Index));
+		}
     }
 }
