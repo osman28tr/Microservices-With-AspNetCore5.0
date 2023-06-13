@@ -1,5 +1,6 @@
 using FreeCourse.Shared.Services;
 using FreeCourse.Web.Handler;
+using FreeCourse.Web.Helpers;
 using FreeCourse.Web.Models;
 using FreeCourse.Web.Services;
 using FreeCourse.Web.Services.Interfaces;
@@ -40,6 +41,7 @@ namespace FreeCourse.Web
             services.Configure<ServiceApiSettings>(Configuration.GetSection("ServiceApiSettings"));
             services.Configure<ClientSettings>(Configuration.GetSection("ClientSettings"));
             services.AddAccessTokenManagement();
+            services.AddSingleton<PhotoHelper>();
             services.AddHttpClient<IIdentityService, IdentityService>();
             services.AddHttpClient<IClientCredentialsTokenService, ClientCredentialTokenService>(); //disco içerisinde adres belirtildiði için belirtmedik.
             services.AddHttpClient<ICatalogService, CatalogService>(opt =>
