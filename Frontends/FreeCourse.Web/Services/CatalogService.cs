@@ -105,7 +105,14 @@ namespace FreeCourse.Web.Services
 
         public async Task<bool> UpdateCourseAsync(UpdateCourseInput updateCourseInput)
         {
-            var response = await _httpClient.PutAsJsonAsync<UpdateCourseInput>("course", updateCourseInput);
+			var resultPhotoService = await _photoStockService.UploadPhoto(updateCourseInput.PhotoFormFile);
+			if (resultPhotoService != null)
+			{
+                await _photoStockService.DeletePhoto(updateCourseInput.Picture);
+				updateCourseInput.Picture = resultPhotoService.Url;
+			}
+
+			var response = await _httpClient.PutAsJsonAsync<UpdateCourseInput>("course", updateCourseInput);
 
             return response.IsSuccessStatusCode;
         }
