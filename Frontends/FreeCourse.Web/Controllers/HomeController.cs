@@ -25,7 +25,11 @@ namespace FreeCourse.Web.Controllers
         {
             return View(await _catalogService.GetAllCourseAsync());
         }
-
+        [HttpGet("/Home/Detail/{courseId}")]
+        public async Task<IActionResult> Detail(string courseId)
+        {
+            return View(await _catalogService.GetCourseById(courseId));
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

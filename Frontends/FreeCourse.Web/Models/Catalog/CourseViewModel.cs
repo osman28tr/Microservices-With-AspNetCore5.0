@@ -10,6 +10,7 @@ namespace FreeCourse.Web.Models.Catalog
         public string ShortDescription { get => Description.Length > 100 ? Description.Substring(0, 100) + "..." : Description; }
         public decimal Price { get; set; }
         public string Picture { get; set; }
+        public string StockPictureUrl { get; set; }
         public DateTime CreatedDate { get; set; }
         public FeatureViewModel Feature { get; set; }
         public string CategoryId { get; set; }
