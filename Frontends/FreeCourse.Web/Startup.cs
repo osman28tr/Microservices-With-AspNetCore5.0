@@ -1,4 +1,5 @@
 using FreeCourse.Shared.Services;
+using FreeCourse.Web.Extensions;
 using FreeCourse.Web.Handler;
 using FreeCourse.Web.Helpers;
 using FreeCourse.Web.Models;
@@ -32,7 +33,9 @@ namespace FreeCourse.Web
         {
             services.AddHttpContextAccessor();
             services.AddScoped<ISharedIdentityService, SharedIdentityService>();
-            var serviceApiSettings = Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
+
+
+            services.AddHttpClientServices(Configuration);
 
             services.AddScoped<ResourceOwnerPasswordTokenHandler>();
             services.AddScoped<ClientCredentialTokenHandler>();
@@ -42,22 +45,7 @@ namespace FreeCourse.Web
             services.Configure<ClientSettings>(Configuration.GetSection("ClientSettings"));
             services.AddAccessTokenManagement();
             services.AddSingleton<PhotoHelper>();
-            services.AddHttpClient<IIdentityService, IdentityService>();
-            services.AddHttpClient<IClientCredentialsTokenService, ClientCredentialTokenService>(); //disco içerisinde adres belirtildiði için belirtmedik.
-            services.AddHttpClient<ICatalogService, CatalogService>(opt =>
-            {
-                opt.BaseAddress = new Uri($"{serviceApiSettings.GatewayBaseUri}/{serviceApiSettings.Catalog.Path}");
-            }).AddHttpMessageHandler<ClientCredentialTokenHandler>(); //catalog mikroservis'i ile iletiþime geçme iþlemi.
-
-			services.AddHttpClient<IPhotoStockService, PhotoStockService>(opt =>
-			{
-				opt.BaseAddress = new Uri($"{serviceApiSettings.GatewayBaseUri}/{serviceApiSettings.PhotoStock.Path}");
-			}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
-
-			services.AddHttpClient<IUserService, UserService>(opt =>
-            {
-                opt.BaseAddress = new Uri(serviceApiSettings.IdentityBaseUri);
-            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>(); //userservice'in içerisinde bir istek baþlatýldýðýnda tokenhandler sýnýfýný kullancak.
+            
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
             {
