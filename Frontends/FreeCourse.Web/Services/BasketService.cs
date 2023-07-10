@@ -1,4 +1,5 @@
 ﻿using FreeCourse.Shared.Dtos;
+using System.Collections.Generic;
 using FreeCourse.Web.Models.Basket;
 using FreeCourse.Web.Services.Interfaces;
 using System.Linq;
@@ -27,7 +28,9 @@ namespace FreeCourse.Web.Services
                 }
             }
             else
-            {               
+            {   
+                basket = new BasketViewModel();
+                
                 basket.BasketItems.Add(basketItemViewModel);
             }
 
