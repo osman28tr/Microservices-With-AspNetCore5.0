@@ -1,14 +1,33 @@
-﻿using FreeCourse.Web.Models.Discount;
+﻿using FreeCourse.Shared.Dtos;
+using FreeCourse.Web.Models.Discount;
 using FreeCourse.Web.Services.Interfaces;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
 
 namespace FreeCourse.Web.Services
 {
     public class DiscountService : IDiscountService
     {
-        public Task<DiscountViewModel> GetDiscount(string discountCode)
+        private readonly HttpClient _httpClient;
+        public DiscountService(HttpClient httpClient)
         {
-            throw new System.NotImplementedException();
+            _httpClient = httpClient;
+        }
+        public async Task<DiscountViewModel> GetDiscount(string discountCode)
+        {
+            //[controller]/[action]/{code}
+
+            var response = await _httpClient.GetAsync($"discount/GetByCode/{discountCode}");
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return null;
+            }
+
+            var discount = await response.Content.ReadFromJsonAsync<Response<DiscountViewModel>>();
+
+            return discount.Data;
         }
     }
 }

@@ -23,7 +23,7 @@ namespace FreeCourse.Services.Discount.Controllers
         {
             return CreateActionResultInstance(await _discountService.GetAll());
         }
-        [HttpGet("{id}")] //controller seviyesinde 4 denirse bu endpoint'e düşer.
+        [HttpGet("{id}")] //controller seviyesinde örn: 4 denirse bu endpoint'e düşer.
         public async Task<IActionResult> GetById(int id)
         {
             var discount = await _discountService.GetById(id);
