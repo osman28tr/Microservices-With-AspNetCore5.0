@@ -6,7 +6,7 @@
         public string CourseId { get; set; }
         public string CourseName { get; set; }
         public decimal Price { get; set; }
-        private decimal? discountAppliedPrice { get; set; }
+        private decimal? discountAppliedPrice;
 
         public decimal CurrentPrice { get => discountAppliedPrice != null ? discountAppliedPrice.Value : Price; }
         public void AppliedDiscount(decimal discountPrice)

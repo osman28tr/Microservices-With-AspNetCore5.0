@@ -123,7 +123,7 @@ namespace FreeCourse.Web.Services
 
         public async Task<bool> SaveOrUpdate(BasketViewModel basketViewModel)
         {
-            var response = await _httpClient.PostAsJsonAsync<BasketViewModel>("basket", basketViewModel);
+            var response = await _httpClient.PostAsJsonAsync<BasketViewModel>("basket",basketViewModel);
 
             return response.IsSuccessStatusCode;
         }
