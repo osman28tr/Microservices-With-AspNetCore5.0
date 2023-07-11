@@ -13,7 +13,7 @@ namespace FreeCourse.Web.Services.Interfaces
         //<summary>
         //  asenkron iletişim, sipariş bilgileri rabbitMQ'ya gönderilecek.
         //</summary>
-        Task Suspend(CheckoutInfoInput checkoutInfoInput);
+        Task SuspendOrder(CheckoutInfoInput checkoutInfoInput);
         Task<List<OrderViewModel>> GetOrder();
     }
 }
