@@ -59,7 +59,7 @@ namespace FreeCourse.Web.Services
                 var orderItem = new OrderItemCreateInput()
                 {
                     ProductId = item.CourseId,
-                    Price = item.Price,
+                    Price = item.CurrentPrice,
                     PictureUrl = "",
                     ProductName = item.CourseName
                 };
@@ -77,7 +77,9 @@ namespace FreeCourse.Web.Services
                 };
             }
 
-            return await response.Content.ReadFromJsonAsync<OrderCreatedViewModel>();
+            var orderCreatedViewModel =  await response.Content.ReadFromJsonAsync<Response<OrderCreatedViewModel>>();
+            await _basketService.Delete();
+            return orderCreatedViewModel.Data;
         }
 
         public async Task<List<OrderViewModel>> GetOrder()

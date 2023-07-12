@@ -35,12 +35,13 @@ namespace FreeCourse.Web.Controllers
                 return View();
             }
 
-            return RedirectToAction(nameof(Checkout), new { orderId = orderStatus.OrderId });
+            return RedirectToAction(nameof(SuccessfulCheckout), new { orderId = orderStatus.OrderId });
         }
 
         public IActionResult SuccessfulCheckout(int orderId)
         {
-            ViewBag.orderId = orderId;  
+            ViewBag.orderId = orderId;
+            
             return View();
         }
     }

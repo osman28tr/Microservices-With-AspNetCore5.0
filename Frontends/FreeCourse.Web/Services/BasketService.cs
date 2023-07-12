@@ -45,7 +45,7 @@ namespace FreeCourse.Web.Services
 
             var basket = await Get();
 
-            if (basket==null || basket.DiscountCode==null)
+            if (basket==null)
             {
                 return false;
             }
@@ -89,7 +89,7 @@ namespace FreeCourse.Web.Services
             {
                 return null;
             }
-            var deneme = await response.Content.ReadAsStringAsync();
+            
             var basketViewModel = await response.Content.ReadFromJsonAsync<Response<BasketViewModel>>();
             return basketViewModel.Data;
         }
