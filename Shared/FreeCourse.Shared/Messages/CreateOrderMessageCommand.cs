@@ -4,8 +4,12 @@ using System.Text;
 
 namespace FreeCourse.Shared.Messages
 {
-    internal class CreateOrderMessageCommand
+    public class CreateOrderMessageCommand
     {
+        public CreateOrderMessageCommand()
+        {
+            OrderItems = new List<OrderItem>();
+        }
         public string BuyerId { get; set; }
         public List<OrderItem> OrderItems { get; set; }
         public string Province { get; set; }

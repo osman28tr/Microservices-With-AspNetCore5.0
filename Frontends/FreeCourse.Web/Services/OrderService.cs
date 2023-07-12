@@ -88,9 +88,49 @@ namespace FreeCourse.Web.Services
             return response.Data;
         }
 
-        public Task SuspendOrder(CheckoutInfoInput checkoutInfoInput)
+        public async Task<OrderSuspendViewModel> SuspendOrder(CheckoutInfoInput checkoutInfoInput)
         {
-            throw new System.NotImplementedException();
+            var basket = await _basketService.Get();
+
+            var orderCreateInput = new OrderCreateInput()
+            {
+                BuyerId = _sharedIdentityService.GetUserId,
+                Address = new AddressCreateInput() { Province = checkoutInfoInput.Province, District = checkoutInfoInput.District, Street = checkoutInfoInput.Street, Line = checkoutInfoInput.Line, ZipCode = checkoutInfoInput.ZipCode },
+            };
+
+            basket.BasketItems.ForEach(item =>
+            {
+                var orderItem = new OrderItemCreateInput()
+                {
+                    ProductId = item.CourseId,
+                    Price = item.CurrentPrice,
+                    PictureUrl = "",
+                    ProductName = item.CourseName
+                };
+                orderCreateInput.OrderItems.Add(orderItem);
+            });
+
+            var paymentInfoInput = new PaymentInfoInput()
+            {
+                CardName = checkoutInfoInput.CardName,
+                CardNumber = checkoutInfoInput.CardNumber,
+                Cvv = checkoutInfoInput.CVV,
+                Expiration = checkoutInfoInput.Expiration,
+                TotalPrice = basket.TotalPrice,
+                Order = orderCreateInput,
+            };
+
+            var responsePayment = await _paymentService.ReceivePayment(paymentInfoInput);
+
+            if (!responsePayment)
+            {
+                return new OrderSuspendViewModel
+                {
+                    Error = "Ödeme alınamadı",
+                    IsSuccessful = false,
+                };
+            }
+            return new OrderSuspendViewModel() { IsSuccessful = true };
         }
     }
 }
