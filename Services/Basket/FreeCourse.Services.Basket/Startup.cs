@@ -1,6 +1,8 @@
+using FreeCourse.Services.Basket.Consumers;
 using FreeCourse.Services.Basket.Services;
 using FreeCourse.Services.Basket.Settings;
 using FreeCourse.Shared.Services;
+using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -33,6 +35,26 @@ namespace FreeCourse.Services.Basket
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMassTransit(x =>
+            {
+                x.AddConsumer<BasketCourseNameChangedEventConsumer>();
+
+                x.UsingRabbitMq((context, cfg) =>
+                {
+                    cfg.Host(Configuration["RabbitMQUrl"], "/", host =>
+                    {
+                        host.Username("guest");
+                        host.Password("guest");
+                    });
+
+                    cfg.ReceiveEndpoint("basket-course-name-changed-event-order-service", e =>
+                    {
+                        e.ConfigureConsumer<BasketCourseNameChangedEventConsumer>(context);
+                    });
+                });
+            });
+            services.AddMassTransitHostedService();
+
             //kullanýcýdan bir userid beklemeyi zorunlu kýlan ayar.
             var requireAuthorizePolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("sub");

@@ -108,6 +108,13 @@ namespace FreeCourse.Services.Catalog.Services
                 UpdatedName = updateCourse.Name,
             });
 
+            await _publishEndPoint.Publish<BasketCourseNameChangedEvent>(new BasketCourseNameChangedEvent
+            {
+                UserId = updateCourse.UserId,
+                CourseId = updateCourse.Id,
+                UpdatedName = updateCourse.Name,
+            });
+
             return Shared.Dtos.Response<NoContent>.Success(204);
         }
 
