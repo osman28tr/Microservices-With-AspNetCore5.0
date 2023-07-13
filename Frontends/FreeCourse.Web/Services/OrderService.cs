@@ -130,7 +130,8 @@ namespace FreeCourse.Web.Services
                     IsSuccessful = false,
                 };
             }
-            return new OrderSuspendViewModel() { IsSuccessful = true };
+            await _basketService.Delete();
+            return new OrderSuspendViewModel { IsSuccessful = true };
         }
     }
 }
