@@ -64,7 +64,7 @@ namespace FreeCourse.IdentityServer
                     AllowOfflineAccess=true,
                     ClientSecrets= {new Secret("secret".Sha256())},
                     AllowedGrantTypes= GrantTypes.ResourceOwnerPassword, //refresh token var.
-                    AllowedScopes={ "basket_fullpermission", "discount_fullpermission", "order_fullpermission", "payment_fullpermission", "gateway_fullpermission", IdentityServerConstants.StandardScopes.Email, IdentityServerConstants.StandardScopes.OpenId,IdentityServerConstants.StandardScopes.Profile, IdentityServerConstants.StandardScopes.OfflineAccess/*kullanıcı login olmadığı zaman refresh token ile yeni bir access token al.*/, IdentityServerConstants.LocalApi.ScopeName,"roles" }, //client'ın erişebileceği claimler
+                    AllowedScopes={ "basket_fullpermission", "order_fullpermission", "gateway_fullpermission", IdentityServerConstants.StandardScopes.Email, IdentityServerConstants.StandardScopes.OpenId,IdentityServerConstants.StandardScopes.Profile, IdentityServerConstants.StandardScopes.OfflineAccess/*kullanıcı login olmadığı zaman refresh token ile yeni bir access token al.*/, IdentityServerConstants.LocalApi.ScopeName,"roles" }, //client'ın erişebileceği claimler
                     AccessTokenLifetime=1*60*60, //access token ömrü
                     RefreshTokenExpiration=TokenExpiration.Absolute,
                     AbsoluteRefreshTokenLifetime= (int) (DateTime.Now.AddDays(60)- DateTime.Now).TotalSeconds, //refresh 
