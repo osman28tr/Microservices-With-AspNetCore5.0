@@ -63,9 +63,10 @@
       "UpstreamPathTemplate": "/services/discount/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "UpstreamSchema": "http",
+      "DelegatingHandlers": [ "TokenExchangeDelegateHandler" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "GatewayAuthenticationSchema", //gateway koruma
-        "AllowedScopes": [ "discount_fullpermission" ] //ilgili mikroservisi koruma, ilgili mikroservise girmeden authenticate ve authorize işlemleri gerçekleştirildi.
+        /*"AllowedScopes": [ "discount_fullpermission" ] //ilgili mikroservisi koruma, ilgili mikroservise girmeden authenticate ve authorize işlemleri gerçekleştirildi.*/
       }
     },
     {
@@ -97,9 +98,10 @@
       "UpstreamPathTemplate": "/services/fakepayment/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "UpstreamSchema": "http",
+      "DelegatingHandlers": [ "TokenExchangeDelegateHandler" ],
       "AuthenticationOptions": {
-        "AuthenticationProviderKey": "GatewayAuthenticationSchema", //gateway koruma
-        "AllowedScopes": [ "payment_fullpermission" ] //ilgili mikroservisi koruma, ilgili mikroservise girmeden authenticate ve authorize işlemleri gerçekleştirildi.
+        "AuthenticationProviderKey": "GatewayAuthenticationSchema" //gateway koruma
+        /*"AllowedScopes": [ "payment_fullpermission" ] //ilgili mikroservisi koruma, ilgili mikroservise girmeden authenticate ve authorize işlemleri gerçekleştirildi.*/
       }
     }
   ],
